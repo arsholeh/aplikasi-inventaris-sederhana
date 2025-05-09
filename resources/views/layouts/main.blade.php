@@ -37,7 +37,6 @@
     <section class="content">
       <div class="container-fluid">
         @yield('content')
-        <h1>ass</h1>
       </div>
     </section>
     <!-- /.content -->
@@ -63,6 +62,6 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('assets/js/demo.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/demo.js') }}"></script> --}}
 </body>
 </html>

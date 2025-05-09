@@ -19,6 +19,9 @@
 @section('content')
   <div class="row">
     <div class="col">
+      <div class="card-header d-flex justify-content-end">
+        <a href="products/create" class="btn btn-primary btn-sm">Tambah Produk</a>
+      </div>
       <div class="card">
         <div class="card-body">
           <table class="table table-bordered">
@@ -31,6 +34,7 @@
                 <th>Harga</th>
                 <th>Stock</th>
                 <th>Kategori</th>
+                <th>#</th>
               </tr>
             </thead>
             <tbody>
@@ -43,6 +47,17 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
                 <td>{{ $product->category->name }}</td>
+                <td>
+                  <div class="d-flex">
+                    <div>
+                      <a href="/products/edit/{{ $product->id }}" class="btn btn-sm btn-warning mr-2 ">Ubah</a>
+                    </div>
+                    <form action="/products/{{ $product->id }}" method="POST" class="d-inline">
+                      @csrf
+                      <button  type="submit" class="btn btn-sm btn-danger mb-3">Delete</button>
+                    </form>
+                  </div>
+                </td>
               </tr>
               @endforeach
             </tbody>
