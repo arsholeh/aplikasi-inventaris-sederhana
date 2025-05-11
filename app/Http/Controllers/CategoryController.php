@@ -39,4 +39,32 @@ class CategoryController extends Controller
 
         return redirect('/categories');
     }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+
+        return view('pages.categories.edit', compact('category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validateData = $request->validate(
+            [
+                "name" => "required | unique:categories,name"
+            ],
+            [
+                "name.required" => "Nama kategori harus diisi",
+                "name.unique" => "Nama kategori sudah ada",
+            ]
+        );
+
+        $category = Category::find($id);
+        $category->name = $request->input('name');
+        $category->slug = Str::slug($request->input('name'));
+
+        $category->save();
+
+        return redirect('/categories');
+    }
 }
