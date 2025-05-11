@@ -14,4 +14,29 @@ class CategoryController extends Controller
 
         return view('pages.categories.index', compact('categories'));
     }
+
+    public function create()
+    {
+        return view('pages.categories.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validateData = $request->validate(
+            [
+                "name" => "required | unique:categories,name"
+            ],
+            [
+                "name.required" => "Nama kategori harus diisi",
+                "name.unique" => "Nama kategori sudah ada",
+            ]
+        );
+
+        $category = new Category();
+        $category->name = $request->input('name');
+        $category->slug = Str::slug($request->input('name'));
+        $category->save();
+
+        return redirect('/categories');
+    }
 }

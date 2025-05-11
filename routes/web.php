@@ -16,3 +16,5 @@ Route::put('/products/{id}', [ProductController::class, 'update'])->name('produc
 Route::post('/products/{id}', [ProductController::class, 'delete'])->name('product.delete');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
