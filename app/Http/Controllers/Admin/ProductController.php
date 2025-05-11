@@ -65,14 +65,7 @@ class ProductController extends Controller
             'category_id' => 'required',
         ]);
 
-        Product::where('id', $id)->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'description' => $request->description,
-            'sku' => $request->sku,
-            'category_id' => $request->category_id,
-        ]);
+        Product::where('id', $id)->update($validated);
 
         return redirect('/products');
     }
