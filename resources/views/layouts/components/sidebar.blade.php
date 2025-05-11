@@ -1,13 +1,18 @@
 @php
   $menus = [
     (object) [
-      "title" => "dashboard",
+      "title" => "Dashboard",
       "path" => "/",
       "icon" => "fas fa-th"
     ] ,
     (object) [
-      "title" => "produk",
+      "title" => "Produk",
       "path" => "products",
+      "icon" => "fas fa-th"
+    ] ,
+    (object) [
+      "title" => "Category",
+      "path" => "categories",
       "icon" => "fas fa-th"
     ] 
 ];
