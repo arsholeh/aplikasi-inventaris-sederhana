@@ -67,4 +67,12 @@ class CategoryController extends Controller
 
         return redirect('/categories');
     }
+
+    public function delete($id)
+    {
+        $product = Category::where('id', $id);
+        $product->delete();
+
+        return redirect('categories');
+    }
 }
