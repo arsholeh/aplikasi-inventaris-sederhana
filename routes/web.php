@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('layouts.main');
-});
+Route::get('/login', [AuthController::class, 'loginView']);
+
+
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/products', [ProductController::class, 'index'])->name('product');
 Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
