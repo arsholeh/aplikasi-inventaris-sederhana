@@ -7,7 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/login', [AuthController::class, 'loginView']);
-
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [DashboardController::class, 'index']);
 
