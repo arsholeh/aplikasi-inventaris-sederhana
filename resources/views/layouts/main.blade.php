@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/css/adminlte.min.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -44,7 +45,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021</strong> All rights reserved.
+    <strong>Copyright &copy;{{date('Y')}}</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

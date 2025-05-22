@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         Product::create($validated);
 
-        return redirect('/products');
+        return redirect('/products')->with('succes', 'berhasil menambahkan produk');
     }
 
 
@@ -67,7 +67,7 @@ class ProductController extends Controller
 
         Product::where('id', $id)->update($validated);
 
-        return redirect('/products');
+        return redirect('/products')->with('succes', 'berhasil mengubah produk');
     }
 
     public function delete($id)
@@ -75,6 +75,6 @@ class ProductController extends Controller
         $product = Product::where('id', $id);
         $product->delete();
 
-        return redirect('products');
+        return redirect('products')->with('succes', 'berhasil menghapus produk');
     }
 }

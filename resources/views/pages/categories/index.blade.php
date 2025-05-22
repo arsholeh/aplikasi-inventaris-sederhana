@@ -19,6 +19,15 @@
 @section('content')
   <div class="row">
     <div class="col">
+      @if (session('succes'))
+      <script>
+          Swal.fire({
+          title: "Berhasil!!",
+          text: "{{ session('succes') }}",
+          icon: "success"
+        });
+        </script>
+      @endif
       <div class="card-header d-flex justify-content-end">
         <a href="categories/create" class="btn btn-primary btn-sm">Tambah Kategori</a>
       </div>
@@ -44,13 +53,15 @@
                     <div>
                       <a href="/categories/edit/{{ $category->id }}" class="btn btn-sm btn-warning mr-2 ">Ubah</a>
                     </div>
-                    <form action="/categories/{{ $category->id }}" method="POST" class="d-inline">
+                    {{-- <form action="/categories/{{ $category->id }}" method="POST" class="d-inline">
                       @csrf
                       <button  type="submit" class="btn btn-sm btn-danger mb-3">Delete</button>
-                    </form>
+                    </form> --}}
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $category->id }}">Hapus</button>
                   </div>
                 </td>
               </tr>
+              @include('pages.categories.delete-confirmation')
               @endforeach
             </tbody>
           </table>

@@ -14,17 +14,25 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/css/adminlte.min.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
     <a href="../../index2.html"><b>Inventaris</b></a>
   </div>
-  <!-- /.login-logo -->
+  @if (session('errors-unautorized'))
+      <script>
+        Swal.fire({
+        title: "Terjadi kesalahan",
+        text: "{{ session('errors-unautorized') }}",
+        icon: "error"
+      });
+      </script>
+  @endif
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Masuk untuk memulai aplikasi</p>
-
       <form action="/login" method="post">
         @csrf
         <div class="input-group mb-3">

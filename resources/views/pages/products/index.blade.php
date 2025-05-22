@@ -11,10 +11,18 @@
         <li class="breadcrumb-item">Produk</li>
       </ul>
     </div>
+      @if (session('succes'))
+      <script>
+          Swal.fire({
+          title: "Berhasil!!",
+          text: "{{ session('succes') }}",
+          icon: "success"
+        });
+        </script>
+      @endif
   </div>
 
 @endsection
-
 
 @section('content')
   <div class="row">
@@ -52,13 +60,11 @@
                     <div>
                       <a href="/products/edit/{{ $product->id }}" class="btn btn-sm btn-warning mr-2 ">Ubah</a>
                     </div>
-                    <form action="/products/{{ $product->id }}" method="POST" class="d-inline">
-                      @csrf
-                      <button  type="submit" class="btn btn-sm btn-danger mb-3">Delete</button>
-                    </form>
+                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $product->id }}">Hapus</button>
                   </div>
                 </td>
               </tr>
+              @include('pages.products.delete-confirmation')
               @endforeach
             </tbody>
           </table>
